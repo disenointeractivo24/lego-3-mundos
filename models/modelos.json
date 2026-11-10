@@ -1,0 +1,59 @@
+{
+  "_leeme": "Modelos 3D exportados de Mecabricks (uso no comercial) y convertidos con herramientas/convertir.html. Minifiguras: convertir con ?tipo=minifig. pose: neutra | fuerza | hechizo | telarana | apunta | saludo.",
+  "nave": {
+    "archivo": "models/xwing.glb",
+    "fuente": "https://www.mecabricks.com/en/models/X1k2qyP2E0G",
+    "credito": "Modelo 3D: X-wing Starfighter (set 9493), recreado por Scrubs en Mecabricks. El set a la venta es la versión 75460."
+  },
+  "castillo": {
+    "archivo": "models/hogwarts-castillo.glb",
+    "fuente": "https://www.mecabricks.com/en/models/WRaZL3wgjpZ",
+    "credito": "Modelo 3D: Hogwarts Castle (set 71043), recreado por Stas en Mecabricks. El set a la venta es el Mini Castillo 40975."
+  },
+  "minifiguras": [
+    {
+      "id": "vader",
+      "archivo": "models/minifig-vader.glb",
+      "nombre": "Darth Vader",
+      "licencia": "Star Wars™",
+      "color": "#213a72",
+      "pose": "fuerza"
+    },
+    {
+      "id": "stormtrooper",
+      "archivo": "models/minifig-stormtrooper.glb",
+      "nombre": "Soldado imperial",
+      "licencia": "Star Wars™",
+      "color": "#213a72",
+      "pose": "apunta"
+    },
+    {
+      "id": "harry",
+      "archivo": "models/minifig-harry.glb",
+      "nombre": "Harry Potter",
+      "licencia": "Harry Potter™",
+      "color": "#6c1828",
+      "pose": "hechizo"
+    },
+    {
+      "id": "dumbledore",
+      "archivo": "models/minifig-dumbledore.glb",
+      "nombre": "Albus Dumbledore",
+      "licencia": "Harry Potter™",
+      "color": "#6c1828",
+      "pose": "saludo"
+    },
+    {
+      "id": "spiderman",
+      "archivo": "models/minifig-spiderman.glb",
+      "nombre": "Spider-Man",
+      "licencia": "Marvel",
+      "color": "#c4102b",
+      "pose": "telarana"
+    }
+  ],
+  "torre": {
+    "archivo": "models/torre-vengadores.glb",
+    "fuente": "https://www.mecabricks.com/en/models/1k2qL0wEaE0"
+  }
+}

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEGO · Cada mundo empieza con un ladrillo</title>
+  <meta name="description" content="Un viaje por tres universos LEGO: Star Wars, Harry Potter y Marvel. Gira los modelos, juega con cada escena y elige tu próximo set.">
+  <meta name="theme-color" content="#b9c3cf">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mundos.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#tienda">Ir directo a la tienda</a>
+
+  <!-- ===== Cabecera: bloque de marca (como la referencia) + menú ===== -->
+  <header class="cabecera" id="cabecera">
+    <a href="#inicio" class="marca" aria-label="LEGO · Tres mundos. Volver al inicio">
+      <img src="img/logo-lego.png" alt="" width="56" height="56">
+      <span class="marca__tres">3 mundos</span>
+      <span class="marca__sub">Star Wars™<br>Harry Potter™<br>Marvel</span>
+    </a>
+    <button class="menu-boton" id="menu-boton" type="button" aria-expanded="false" aria-controls="menu"><span></span><span class="sr">Menú</span></button>
+    <nav class="menu" id="menu" aria-label="Secciones">
+      <ul>
+        <li><a href="#inicio" data-cap="0">Inicio</a></li>
+        <li><a href="#mundos" data-cap="1">Mundos</a></li>
+        <li><a href="#star-wars" data-cap="2">Star Wars</a></li>
+        <li><a href="#harry-potter" data-cap="3">Harry Potter</a></li>
+        <li><a href="#marvel" data-cap="4">Marvel</a></li>
+      </ul>
+      <a class="menu__comprar" href="#tienda" data-cap="5">Comprar <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <!-- Rueda de progreso (siguiente capítulo) -->
+  <div class="rueda">
+    <a class="rueda__siguiente" id="rueda-sig" href="#mundos" aria-label="Ir al siguiente capítulo">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="rueda__pista" cx="32" cy="32" r="28"/><circle class="rueda__prog" id="rueda-prog" cx="32" cy="32" r="28"/><circle class="rueda__nucleo" cx="32" cy="32" r="9"/></svg>
+    </a>
+    <span class="rueda__texto" aria-hidden="true">Siguiente</span>
+  </div>
+
+  <main id="contenido">
+
+    <!-- ============ 0 · APERTURA ============ -->
+    <section class="cap hero" id="inicio" data-cap="0" aria-labelledby="hero-titulo">
+      <div class="hero__banda" data-p="0.06" aria-hidden="true"></div>
+
+      <h1 class="hero__titulo" id="hero-titulo" data-p="-0.05">
+        <span>Cada mundo</span>
+        <span>empieza con</span>
+        <span>un <em>ladrillo.</em></span>
+      </h1>
+
+      <div class="hero__disco" data-p="0.04" aria-hidden="true"></div>
+      <div class="hero__escenario">
+        <div class="visor visor--hero" data-p="0.12" id="visor-hero" tabindex="0" role="group" aria-roledescription="visor 3D"
+             aria-label="Minifigura en 3D. Arrastra o usa las flechas del teclado para girarla.">
+        </div>
+      </div>
+
+      <div class="hero__pie">
+        <p class="hero__nombre" id="hero-nombre" aria-live="polite">Elige una minifigura</p>
+        <div class="carrusel">
+          <button class="flecha" id="hero-prev" type="button" aria-label="Minifigura anterior"><span aria-hidden="true">‹</span></button>
+          <div class="iconos" id="hero-iconos" role="group" aria-label="Minifiguras"></div>
+          <button class="flecha" id="hero-next" type="button" aria-label="Minifigura siguiente"><span aria-hidden="true">›</span></button>
+          <button class="flecha flecha--pausa" id="hero-pausa" type="button" aria-label="Pausar el cambio automático" aria-pressed="false"><span aria-hidden="true">❚❚</span></button>
+          <span class="carrusel__tiempo" aria-hidden="true"><i id="hero-tiempo"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 1 · CONOCE LOS MUNDOS (abanico de franjas) ============ -->
+    <section class="cap abanico" id="mundos" data-cap="1" aria-labelledby="mundos-titulo">
+      <h2 class="abanico__titulo" id="mundos-titulo" hidden>Conoce los <b>3 mundos</b></h2>
+      <ul class="abanico__franjas">
+        <li class="franja franja--sw" data-p="0.04">
+          <a href="#star-wars">
+            <span class="franja__foto"><img src="img/tema-starwars.webp" alt="" loading="lazy"></span>
+            <span class="franja__pie"><img src="img/logo-starwars.webp" alt="" width="700" height="304"></span>
+            <span class="sr">Star Wars: ir al capítulo</span>
+          </a>
+        </li>
+        <li class="franja franja--hp" data-p="0.08">
+          <a href="#harry-potter">
+            <span class="franja__foto"><img src="img/tema-harrypotter.webp" alt="" loading="lazy"></span>
+            <span class="franja__pie"><img src="img/logo-harrypotter.webp" alt="" width="700" height="237"></span>
+            <span class="sr">Harry Potter: ir al capítulo</span>
+          </a>
+        </li>
+        <li class="franja franja--mv" data-p="0.12">
+          <a href="#marvel">
+            <span class="franja__foto franja__foto--recorte"><img src="img/tema-marvel.webp" alt="" loading="lazy"></span>
+            <span class="franja__pie"><img src="img/logo-marvel.webp" alt="" width="700" height="282"></span>
+            <span class="sr">Marvel: ir al capítulo</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ 2 · STAR WARS ============ -->
+    <section class="cap mundo mundo--sw" id="star-wars" data-cap="2" aria-labelledby="sw-titulo">
+      <div class="mundo__banda" data-p="0.05" aria-hidden="true"></div>
+
+      <div class="mundo__modelo" data-p="0.12">
+        <div class="visor visor--nave" id="visor-nave" tabindex="0" role="group" aria-roledescription="visor 3D"
+             aria-label="Caza estelar X-wing en 3D. Arrastra o usa las flechas del teclado para girarlo.">
+          <img class="visor__respaldo" src="https://cdn.shopify.com/s/files/1/0254/0093/4474/files/75460.jpg?v=1782326073&width=900"
+               alt="Set LEGO Star Wars Caza Estelar Ala-X de la Nueva República (75460)" loading="lazy">
+          <span class="visor__carga" aria-hidden="true"></span>
+          <div class="fig-cap fig-cap--sw" data-fig="stormtrooper" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="mundo__texto revela">
+        <h2 class="mundo__titulo" id="sw-titulo"><span>Explora</span> <span>la galaxia</span></h2>
+        <p class="mundo__bajada">El caza más famoso de la galaxia, pieza a pieza. Gíralo y descubre cómo encajan las alas en X, los motores y la cabina. La versión de la Nueva República despliega sus alas en modo de ataque con un solo botón.</p>
+        <ul class="mundo__datos">
+          <li><b>558</b> piezas</li>
+          <li><b>9+</b> años</li>
+          <li>Piloto + droide astromecánico</li>
+        </ul>
+        <div class="mundo__acciones">
+          <button type="button" class="circulo" id="nave-reset" aria-label="Restablecer la vista de la nave" disabled><span aria-hidden="true">⟲</span></button>
+          <p class="mundo__ayuda">Arrastra la nave para girarla</p>
+        </div>
+        <p class="mundo__credito" id="nave-credito">Cargando modelo 3D…</p>
+      </div>
+    </section>
+
+    <!-- ============ 3 · HARRY POTTER ============ -->
+    <section class="cap mundo mundo--hp" id="harry-potter" data-cap="3" aria-labelledby="hp-titulo">
+      <div class="mundo__banda" data-p="0.05" aria-hidden="true"></div>
+
+      <div class="mundo__texto revela">
+        <h2 class="mundo__titulo" id="hp-titulo"><span>Construye</span> <span>la magia</span></h2>
+        <p class="mundo__bajada">Torres, almenas y pasadizos secretos a microescala. El Mini Castillo de Hogwarts™ reúne el Gran Comedor, la Torre Central, el Ala Este y la Torre de Astronomía, con la Cámara Secreta escondida bajo sus muros.</p>
+        <ul class="mundo__datos">
+          <li><b>700</b> piezas</li>
+          <li><b>10+</b> años</li>
+          <li>Cámara Secreta y Espejo de Oesed</li>
+        </ul>
+        <div class="mundo__acciones">
+          <button type="button" class="circulo circulo--grande" id="btn-luz" aria-pressed="false" aria-labelledby="btn-luz-txt"><span aria-hidden="true">✦</span></button>
+          <p class="mundo__ayuda" id="btn-luz-txt">Encender el castillo</p>
+        </div>
+        <p class="mundo__credito" id="castillo-credito">Modelo 3D: Hogwarts Castle (set 71043), recreado por Stas en Mecabricks. El set a la venta es el Mini Castillo 40975.</p>
+      </div>
+
+      <div class="mundo__modelo" data-p="0.12">
+        <div class="visor visor--castillo" id="visor-castillo" tabindex="0" role="group" aria-roledescription="visor 3D"
+             aria-label="Castillo de Hogwarts en 3D. Arrastra o usa las flechas del teclado para girarlo.">
+          <img class="visor__respaldo" src="img/set-hogwarts.png" alt="Set LEGO Harry Potter Mini Castillo de Hogwarts (40975)" loading="lazy">
+          <span class="visor__carga" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · MARVEL ============ -->
+    <section class="cap mundo mundo--mv" id="marvel" data-cap="4" aria-labelledby="mv-titulo">
+      <div class="mundo__banda" data-p="0.05" aria-hidden="true"></div>
+
+      <div class="mundo__modelo" data-p="0.12">
+        <div class="visor visor--quinjet" id="visor-quinjet" tabindex="0" role="group" aria-roledescription="visor 3D"
+             aria-label="Torre de los Vengadores en 3D. Arrastra o usa las flechas del teclado para girarla.">
+          <img class="visor__respaldo" src="https://cdn.shopify.com/s/files/1/0254/0093/4474/files/76352.jpg?v=1790798048&width=900" alt="Set LEGO Marvel Nueva Torre Vengadores de Avengers: Doomsday (76352)" loading="lazy">
+          <span class="visor__carga" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="mundo__texto revela">
+        <h2 class="mundo__titulo" id="mv-titulo"><span>Reúne a</span> <span>tus héroes</span></h2>
+        <div aria-live="polite">
+          <h3 class="mundo__nombre" id="mv-nombre">Torre de los Vengadores</h3>
+          <p class="mundo__bajada" id="mv-desc">Una torre de 4 niveles con Doctor Doom, Yelena, Red Guardian, Bucky Barnes, la Antorcha Humana y Sentry. Arriba, laboratorio y plataforma de aterrizaje; más abajo, la sala de control.</p>
+          <ul class="mundo__datos" id="mv-datos"><li><b>954</b> piezas</li><li><b>12+</b> años</li><li>Set 76352</li></ul>
+        </div>
+        <p class="mundo__credito">Modelo 3D: Avengers Tower (set 76269), recreado por Stephan3321 en Mecabricks. El set a la venta es la Nueva Torre Vengadores 76352.</p>
+      </div>
+    </section>
+
+    <!-- ============ 5 · TIENDA (mosaico) ============ -->
+    <section class="cap tienda" id="tienda" data-cap="5" aria-labelledby="tienda-titulo">
+      <div class="tienda__cabecera revela">
+        <h2 class="tienda__titulo" id="tienda-titulo"><span>Elige tu próxima</span> <span>aventura</span></h2>
+        <p class="tienda__bajada">Un set por mundo. Precios de la Tienda LEGO Colombia.</p>
+      </div>
+      <ul class="vitrina">
+        <li class="ficha-set t-sw">
+          <a class="ficha-set__link" href="https://tiendalego.com.co/products/caza-estelar-ala-x-de-la-nueva-republica-75460" target="_blank" rel="noopener">
+            <span class="ficha-set__foto"><img src="https://cdn.shopify.com/s/files/1/0254/0093/4474/files/75460.jpg?v=1782326073&width=700" alt="Set Caza Estelar Ala-X de la Nueva República" loading="lazy"></span>
+            <span class="ficha-set__info">
+              <span class="ficha-set__mundo">Star Wars™ · 75460</span>
+              <span class="ficha-set__nombre">Caza Estelar Ala-X de la Nueva República</span>
+              <span class="ficha-set__meta">558 piezas · 9+</span>
+              <span class="ficha-set__pie">
+                <span class="ficha-set__precio">$ 449.900</span>
+                <span class="ficha-set__cta">Comprar <span aria-hidden="true">↗</span><span class="sr">(abre la Tienda LEGO en una pestaña nueva)</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li class="ficha-set t-hp">
+          <a class="ficha-set__link" href="https://tiendalego.com.co/products/mini-castillo-de-hogwarts%E2%84%A2-40975" target="_blank" rel="noopener">
+            <span class="ficha-set__foto"><img src="img/set-hogwarts.png" alt="Set Mini Castillo de Hogwarts" loading="lazy"></span>
+            <span class="ficha-set__info">
+              <span class="ficha-set__mundo">Harry Potter™ · 40975</span>
+              <span class="ficha-set__nombre">Mini Castillo de Hogwarts™</span>
+              <span class="ficha-set__meta">700 piezas · 10+</span>
+              <span class="ficha-set__pie">
+                <span class="ficha-set__precio">$ 279.900</span>
+                <span class="ficha-set__cta">Comprar <span aria-hidden="true">↗</span><span class="sr">(abre la Tienda LEGO en una pestaña nueva)</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li class="ficha-set t-mv">
+          <a class="ficha-set__link" href="https://tiendalego.com.co/products/nueva-torre-vengadores-de-avengers-doomsday-76352" target="_blank" rel="noopener">
+            <span class="ficha-set__foto"><img src="https://cdn.shopify.com/s/files/1/0254/0093/4474/files/76352.jpg?v=1790798048&width=700" alt="Set Nueva Torre Vengadores de Avengers: Doomsday" loading="lazy"></span>
+            <span class="ficha-set__info">
+              <span class="ficha-set__mundo">Marvel · 76352</span>
+              <span class="ficha-set__nombre">Nueva Torre Vengadores</span>
+              <span class="ficha-set__meta">954 piezas · 12+</span>
+              <span class="ficha-set__pie">
+                <span class="ficha-set__precio">$ 699.900</span>
+                <span class="ficha-set__cta">Comprar <span aria-hidden="true">↗</span><span class="sr">(abre la Tienda LEGO en una pestaña nueva)</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie__grid">
+      <div class="pie__marca">
+        <a href="#inicio" class="pie__logo" aria-label="LEGO, volver al inicio"><img src="img/logo-lego.png" alt="" width="56" height="56" loading="lazy"></a>
+        <p class="pie__lema">Cada mundo empieza<br>con un ladrillo.</p>
+        <div class="pie__redes">
+          <a href="https://www.instagram.com/lego/" target="_blank" rel="noopener" aria-label="LEGO en Instagram"><img src="img/instagram.svg" alt="" width="20" height="20"></a>
+          <a href="https://www.youtube.com/lego" target="_blank" rel="noopener" aria-label="LEGO en YouTube"><img src="img/youtube.svg" alt="" width="20" height="20"></a>
+          <a href="https://www.tiktok.com/@lego" target="_blank" rel="noopener" aria-label="LEGO en TikTok"><img src="img/tiktok.svg" alt="" width="20" height="20"></a>
+          <a href="https://www.facebook.com/LEGO" target="_blank" rel="noopener" aria-label="LEGO en Facebook"><img src="img/facebook.svg" alt="" width="20" height="20"></a>
+          <a href="https://x.com/LEGO_Group" target="_blank" rel="noopener" aria-label="LEGO en X"><img src="img/x.svg" alt="" width="20" height="20"></a>
+        </div>
+      </div>
+      <div class="pie__cols">
+        <div class="pie__col"><p>EXPLORA</p><a href="#mundos">Los 3 mundos</a><a href="#star-wars">Star Wars</a><a href="#harry-potter">Harry Potter</a><a href="#marvel">Marvel</a></div>
+        <div class="pie__col"><p>COMPRA</p><a href="https://tiendalego.com.co/products/caza-estelar-ala-x-de-la-nueva-republica-75460" target="_blank" rel="noopener">Caza Ala-X 75460</a><a href="https://tiendalego.com.co/products/mini-castillo-de-hogwarts%E2%84%A2-40975" target="_blank" rel="noopener">Mini Castillo 40975</a><a href="https://tiendalego.com.co/products/nueva-torre-vengadores-de-avengers-doomsday-76352" target="_blank" rel="noopener">Torre Vengadores 76352</a></div>
+        <div class="pie__col"><p>TIENDA LEGO</p><a href="https://tiendalego.com.co/collections/star-wars" target="_blank" rel="noopener">Todo Star Wars</a><a href="https://tiendalego.com.co" target="_blank" rel="noopener">tiendalego.com.co</a></div>
+        <div class="pie__col"><p>MODELOS 3D</p><a href="https://www.mecabricks.com/en/models/X1k2qyP2E0G" target="_blank" rel="noopener">X-wing · Scrubs</a><a href="https://www.mecabricks.com/en/models/WRaZL3wgjpZ" target="_blank" rel="noopener">Hogwarts · Stas</a><a href="https://www.mecabricks.com/en/models/1k2qL0wEaE0" target="_blank" rel="noopener">Avengers Tower · Stephan3321</a><a href="https://www.mecabricks.com" target="_blank" rel="noopener">Mecabricks (uso no comercial)</a></div>
+      </div>
+      <p class="pie__legal">© 2026 · Proyecto académico de Diseño Interactivo · No afiliado a The LEGO Group. Precios tomados de tiendalego.com.co el 10/11/2026.</p>
+      <p class="pie__idioma">Español (Colombia) · COP</p>
+    </div>
+  </footer>
+
+  <script src="js/mundos.js" defer></script>
+</body>
+</html>
