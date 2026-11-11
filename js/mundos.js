@@ -16,7 +16,7 @@
       let rel = rels.get(c.sec);
       if (rel === undefined) { const r = c.sec.getBoundingClientRect(); rel = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; rels.set(c.sec, rel); }
       if (Math.abs(rel) > 1.6) continue;
-      c.el.style.transform = `translate3d(0, ${(rel * c.p * innerHeight * k).toFixed(1)}px, 0)` + (c.el.classList.contains('mundo__banda') || c.el.classList.contains('hero__banda') ? ` skewX(${c.el.closest('.mundo--hp') ? 24 : -22}deg)` : '');
+      c.el.style.transform = `translate3d(0, ${(rel * c.p * innerHeight * k / (window.__zf || 1)).toFixed(1)}px, 0)` + (c.el.classList.contains('mundo__banda') || c.el.classList.contains('hero__banda') ? ` skewX(${c.el.closest('.mundo--hp') ? 24 : -22}deg)` : '');
     }
   };
 

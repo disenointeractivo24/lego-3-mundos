@@ -11,6 +11,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/mundos.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script>
+    /* Pantallas grandes (iMac 27", 2560 px…): la página se escala igual que se ve a 1920 px.
+       Se mide cómo trata cada navegador las unidades vh/vw con zoom y se compensa con --kv. */
+    (function () {
+      var raiz = document.documentElement, BASE = 1920;
+      function aplicar() {
+        var z = innerWidth > BASE ? innerWidth / BASE : 1;
+        raiz.style.zoom = z === 1 ? '' : z.toFixed(4);
+        raiz.style.setProperty('--kv', 1);
+        var p = document.createElement('div');
+        p.style.cssText = 'position:fixed;left:0;top:0;width:100px;height:100vh;visibility:hidden;pointer-events:none';
+        raiz.appendChild(p);
+        var r = p.getBoundingClientRect();
+        var kv = r.height / innerHeight;           // ≈ z si el navegador multiplica vh por el zoom
+        var zf = r.width / 100;                    // ≈ z si getBoundingClientRect devuelve medidas ya escaladas
+        p.remove();
+        raiz.style.setProperty('--kv', Math.abs(kv - 1) < .02 ? 1 : kv.toFixed(4));
+        window.__zf = Math.abs(zf - 1) < .02 ? 1 : zf;
+      }
+      aplicar();
+      var t; addEventListener('resize', function () { clearTimeout(t); t = setTimeout(aplicar, 120); });
+    })();
+  </script>
   <script type="importmap">
     { "imports": {
         "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",

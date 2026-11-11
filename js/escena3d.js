@@ -291,7 +291,8 @@ class Vista {
       const top = Math.max(r.top, s.top, 80), bot = Math.min(r.bottom, s.bottom - 110, innerHeight - 16), der = Math.min(r.right, s.right, innerWidth - 90);
       const ver = bot - top > 130 && el.classList.contains('is-3d') && r.right > 60;
       ui.classList.toggle('is-on', ver);
-      if (ver) { ui.style.left = (der - 52) + 'px'; ui.style.top = (bot - 96) + 'px'; } };
+      const zf = window.__zf || 1; // pantallas grandes: la página está escalada con zoom
+      if (ver) { ui.style.left = ((der - 52 * zf) / zf) + 'px'; ui.style.top = ((bot - 96 * zf) / zf) + 'px'; } };
     const pedir = () => { if (!pend) { pend = true; requestAnimationFrame(ubicar); } };
     addEventListener('scroll', pedir, { passive: true }); addEventListener('resize', pedir);
     new MutationObserver(pedir).observe(el, { attributes: true, attributeFilter: ['class'] }); pedir();
